@@ -1,5 +1,7 @@
 package com.vyarth.workoutpal
 
+import android.app.Dialog
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vyarth.workoutpal.databinding.ActivityExerciseBinding
+import com.vyarth.workoutpal.databinding.DialogCustomBackConfirmationBinding
 import java.util.Locale
 
 class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
@@ -64,7 +67,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
         binding?.toolbarExercise?.setNavigationOnClickListener {
-            onBackPressed()
+            customDialogForBackButton()
         }
 
         tts = TextToSpeech(this, this)
@@ -80,6 +83,36 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         setupExerciseStatusRecyclerView()
         // END
     }
+
+    /**
+     * Function is used to launch the custom confirmation dialog.
+     */
+    //Performing the steps to show the custom dialog for back button confirmation while the exercise is going on.)
+    // START
+    private fun customDialogForBackButton() {
+        val customDialog = Dialog(this)
+        //create a binding variable
+        val dialogBinding = DialogCustomBackConfirmationBinding.inflate(layoutInflater)
+        /*Set the screen content from a layout resource.
+         The resource will be inflated, adding all top-level views to the screen.*/
+        // bind to the dialog
+        customDialog.setContentView(dialogBinding.root)
+        //to ensure that the user clicks one of the button and that the dialog is
+        //not dismissed when surrounding parts of the screen is clicked
+        customDialog.setCanceledOnTouchOutside(false)
+        dialogBinding.tvYes.setOnClickListener {
+            // We need to specify that we are finishing this activity if not the player
+            // continues beeping even after the screen is not visibile
+            this@ExerciseActivity.finish()
+            customDialog.dismiss() // Dialog will be dismissed
+        }
+        dialogBinding.tvNo.setOnClickListener {
+            customDialog.dismiss()
+        }
+        //Start the dialog and display it on screen.
+        customDialog.show()
+    }
+    // END
 
 
     //Setting up the Get Ready View with 10 seconds of timer
@@ -227,17 +260,16 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
 
             override fun onFinish() {
-                // TODO(Step 10 - Updating the view after completing the 30 seconds exercise.)
-                // START
+
                 if (currentExercisePosition < exerciseList?.size!! - 1) {
+                    exerciseList!![currentExercisePosition].setIsSelected(false) // exercise is completed so selection is set to false
+                    exerciseList!![currentExercisePosition].setIsCompleted(true) // updating in the list that this exercise is completed
+                    exerciseAdapter?.notifyDataSetChanged()
                     setupRestView()
                 } else {
-
-                    Toast.makeText(
-                        this@ExerciseActivity,
-                        "Congratulations! You have completed the 7 minutes workout.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    finish()
+                    val intent = Intent(this@ExerciseActivity,FinishActivity::class.java)
+                    startActivity(intent)
                 }
                 // END
             }
