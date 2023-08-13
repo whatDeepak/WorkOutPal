@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".BMIActivity">
 
@@ -54,7 +55,7 @@
         android:id="@+id/tilMetricUnitWeight"
         android:layout_margin="10dp"
         app:boxStrokeColor="@color/colorAccent"
-        app:hintTextColor="@color/colorAccent"
+        app:hintTextColor="@color/black"
         android:layout_below="@id/rgUnits"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -65,6 +66,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="WEIGHT (in kg)"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:inputType="numberDecimal"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -73,7 +76,7 @@
         android:layout_below="@id/tilMetricUnitWeight"
         android:id="@+id/tilMetricUnitHeight"
         app:boxStrokeColor="@color/colorAccent"
-        app:hintTextColor="@color/colorAccent"
+        app:hintTextColor="@color/black"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
@@ -85,6 +88,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="HEIGHT (in cm)"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:inputType="numberDecimal"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -92,7 +97,7 @@
         android:id="@+id/tilUsMetricUnitWeight"
         android:layout_margin="10dp"
         app:boxStrokeColor="@color/colorAccent"
-        app:hintTextColor="@color/colorAccent"
+        app:hintTextColor="@color/black"
         android:layout_below="@id/rgUnits"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -103,6 +108,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="WEIGHT (in pounds)"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:inputType="numberDecimal"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -111,7 +118,7 @@
         android:layout_below="@id/tilMetricUnitWeight"
         android:id="@+id/tilMetricUsUnitHeightFeet"
         app:boxStrokeColor="@color/colorAccent"
-        app:hintTextColor="@color/colorAccent"
+        app:hintTextColor="@color/black"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="wrap_content"
         android:layout_marginTop="10dp"
@@ -127,6 +134,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Feet"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:inputType="numberDecimal"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -141,7 +150,7 @@
         android:layout_below="@id/tilMetricUnitWeight"
         android:id="@+id/tilMetricUsUnitHeightInch"
         app:boxStrokeColor="@color/colorAccent"
-        app:hintTextColor="@color/colorAccent"
+        app:hintTextColor="@color/black"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@id/view"
         android:visibility="gone"
@@ -157,6 +166,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Inch"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
             android:inputType="numberDecimal"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -180,6 +191,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="YOUR BMI"
+            android:textColor="@color/black"
             android:textAllCaps="true"
             android:textSize="16sp" />
 
@@ -189,6 +201,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             tools:text="15.00" />
@@ -198,6 +211,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:textColor="@color/black"
             android:gravity="center"
             android:textSize="18sp"
             tools:text="Normal" />
@@ -207,6 +221,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:textColor="@color/black"
             android:gravity="center"
             android:textSize="18sp"
             tools:text="Normal" />
